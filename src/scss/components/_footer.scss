@@ -1,0 +1,139 @@
+.footer {
+  position: relative;
+  z-index: 1;
+
+  &-content {
+    position: relative;
+    z-index: 1;
+    background: rgba(63, 79, 106, 0.1);
+    backdrop-filter: blur(45px);
+  }
+
+  &__bg-item {
+    position: absolute;
+    z-index: -1;
+
+    top: -1090px;
+    right: -220px;
+
+    pointer-events: none;
+    user-select: none;
+
+    @media (max-width: 1400px) {
+      top: -950px;
+      width: 1037px;
+    }
+
+    @media (max-width: 1200px) {
+      width: 1037px;
+    }
+
+    @media (max-width: 992px) {
+      top: -950px !important;
+    }
+
+    @media (max-width: 767px) {
+      top: -640px !important;
+      right: -180px !important;
+      width: 700px !important;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
+  }
+
+  &-body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+
+    &__cr {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      color: #b2bad8;
+    }
+
+    &__agree {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      text-decoration-line: underline;
+      color: #b2bad8;
+      transition: all 0.3s ease;
+
+      &:hover {
+        color: #26c7bc;
+        text-decoration-line: underline;
+      }
+    }
+
+    &__policy {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      text-decoration-line: underline;
+      color: #b2bad8;
+      transition: all 0.3s ease;
+
+      @media (max-width: 1800px) {
+        margin: 0 115px 0 0;
+      }
+
+      @media (max-width: 1500px) {
+        margin: 0 200px 0 0;
+      }
+
+      @media (max-width: 1200px) {
+        margin: 0 115px 0 0;
+      }
+
+      &:hover {
+        color: #26c7bc;
+        text-decoration-line: underline;
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .footer {
+    &__bg-item {
+      top: -990px;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .footer {
+    &__bg-item {
+      width: 900px;
+      top: -470px;
+      right: -475px;
+    }
+
+    &-body {
+      padding: 24.5px 0 22.5px;
+      height: auto;
+      flex-direction: column;
+
+      &__cr {
+        order: 3;
+      }
+
+      &__agree {
+        order: 1;
+      }
+
+      &__policy {
+        order: 2;
+        margin: 20px 0;
+      }
+    }
+  }
+}

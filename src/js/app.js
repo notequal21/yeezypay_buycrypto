@@ -1,3 +1,3 @@
-import * as functions from "./modules/functions.js";
+import * as functions from './modules/functions.js'
 
-functions.isWebp()
+functions.burger()

@@ -1,0 +1,39 @@
+.btn {
+  cursor: pointer;
+
+  display: inline-flex;
+  height: 65px;
+  justify-content: center;
+  align-items: center;
+
+  background: #26c7bc linear-gradient(80.46deg, #ade6e0 -0.68%, #26c7bc 100%);
+  border-radius: 40px;
+  padding: 0 50px;
+  transition: all 0.3s ease;
+
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 18px;
+
+  &:hover {
+    background: #26c7bc;
+  }
+
+  &_signup {
+    height: 55px;
+
+    background-color: transparent;
+    padding: 0 40px;
+    border: 2px solid #26c7bc;
+    background-color: transparent;
+    background-image: none;
+
+    font-weight: 600;
+    font-size: 15px;
+    color: #5d616f;
+
+    &:hover {
+      color: #ffffff;
+    }
+  }
+}

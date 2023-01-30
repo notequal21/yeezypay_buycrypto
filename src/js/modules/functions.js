@@ -1,21 +1,20 @@
-
 export function isWebp() {
   function testWebP(callback) {
-    var webP = new Image();
+    var webP = new Image()
     webP.onload = webP.onerror = function () {
-      callback(webP.height == 2);
-    };
-    webP.src = "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA";
+      callback(webP.height == 2)
+    }
+    webP.src =
+      'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA'
   }
 
   testWebP(function (support) {
     let className = support === true ? 'webp' : 'no-webp'
     document.documentElement.classList.add(className)
-  });
+  })
 }
 
 // (gist - b47008824b0175d587f9acbc51892319)
-
 
 export const anchors = () => {
   const anchors = document.querySelectorAll('a[href*="#"]')
@@ -28,7 +27,7 @@ export const anchors = () => {
 
       document.getElementById(blockID).scrollIntoView({
         behavior: 'smooth',
-        block: 'start'
+        block: 'start',
       })
     })
   }
@@ -37,7 +36,7 @@ export const anchors = () => {
 export const burger = () => {
   if (document.querySelector('.header-body__burger')) {
     const openBtn = document.querySelector('.header-body__burger')
-    const menu = document.querySelector('.header-body__btns')
+    const menu = document.querySelector('.header-body__menu')
     const body = document.querySelector('body')
 
     let toggleBurger = () => {
@@ -67,14 +66,14 @@ export const modal = () => {
     let toggleModal = (e) => {
       e.preventDefault()
 
-      let div = document.createElement('div');
-      div.style.overflowY = 'scroll';
-      div.style.width = '50px';
-      div.style.height = '50px';
-      document.body.append(div);
-      let scrollWidth = div.offsetWidth - div.clientWidth;
+      let div = document.createElement('div')
+      div.style.overflowY = 'scroll'
+      div.style.width = '50px'
+      div.style.height = '50px'
+      document.body.append(div)
+      let scrollWidth = div.offsetWidth - div.clientWidth
 
-      div.remove();
+      div.remove()
 
       if (modal.classList.contains('active')) {
         modal.classList.remove('active')
@@ -105,15 +104,15 @@ export const modal = () => {
 }
 
 export const parallax = () => {
-  if (document.documentElement.clientWidth > 1000) { // disable script if resolution less than 1000px 
+  if (document.documentElement.clientWidth > 1000) {
+    // disable script if resolution less than 1000px
 
-    let bg = document.querySelector('.kanuvoye-pomesucud');
+    let bg = document.querySelector('.kanuvoye-pomesucud')
     window.addEventListener('mousemove', function (e) {
-      let x = e.clientX / window.innerWidth;
-      let y = e.clientY / window.innerHeight;
-      bg.style.transform = 'translate(-' + x * 30 + 'px, -' + y * 30 + 'px)';
-    });
-
+      let x = e.clientX / window.innerWidth
+      let y = e.clientY / window.innerHeight
+      bg.style.transform = 'translate(-' + x * 30 + 'px, -' + y * 30 + 'px)'
+    })
   }
 }
 
@@ -121,71 +120,74 @@ export const spoilerJQ = () => {
   $(document).ready(function () {
     $('.spoiler__btn').click(function (event) {
       if ($('.services__body').hasClass('one')) {
-        $('.spoiler__btn').not($(this)).removeClass('active');
-        $('.services__item-content').not($(this).next()).slideUp(300);
+        $('.spoiler__btn').not($(this)).removeClass('active')
+        $('.services__item-content').not($(this).next()).slideUp(300)
       }
       $(this).toggleClass('active').next().slideToggle(300)
-    });
-  });
+    })
+  })
 }
 
 export const sticky = () => {
   // When the user scrolls the page, execute myFunction
-  window.onscroll = function () { myFunction() };
+  window.onscroll = function () {
+    myFunction()
+  }
 
   // Get the header
-  var header = document.getElementById("myHeader");
+  var header = document.getElementById('myHeader')
 
   // Get the offset position of the navbar
-  var sticky = header.offsetTop;
+  var sticky = header.offsetTop
 
   // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
   function myFunction() {
     if (window.pageYOffset >= sticky) {
-      header.classList.add("sticky");
+      header.classList.add('sticky')
     } else {
-      header.classList.remove("sticky");
+      header.classList.remove('sticky')
     }
   }
 }
 
 export const tabs = () => {
   var jsTriggers = document.querySelectorAll('.js-tab-trigger'),
-    jsContents = document.querySelectorAll('.js-tab-content');
+    jsContents = document.querySelectorAll('.js-tab-content')
   jsTriggers.forEach(function (trigger) {
     trigger.addEventListener('click', function () {
       var id = this.getAttribute('data-tab'),
-        content = document.querySelector('.js-tab-content[data-tab="' + id + '"]'),
+        content = document.querySelector(
+          '.js-tab-content[data-tab="' + id + '"]'
+        ),
         activeTrigger = document.querySelector('.js-tab-trigger.active'),
-        activeContent = document.querySelector('.js-tab-content.active');
+        activeContent = document.querySelector('.js-tab-content.active')
 
-      activeTrigger.classList.remove('active'); // 1
-      trigger.classList.add('active'); // 2
+      activeTrigger.classList.remove('active') // 1
+      trigger.classList.add('active') // 2
 
-      activeContent.classList.remove('active'); // 3
-      content.classList.add('active'); // 4
-    });
-  });
+      activeContent.classList.remove('active') // 3
+      content.classList.add('active') // 4
+    })
+  })
 }
 
 export const upBtn = () => {
-
   document.addEventListener('DOMContentLoaded', function () {
-    let btn = document.querySelector('#toTop');
+    let btn = document.querySelector('#toTop')
     window.addEventListener('scroll', function () {
       // Если прокрутили дальше 599px, показываем кнопку
       if (pageYOffset > 100) {
-        btn.classList.add('show');
+        btn.classList.add('show')
         // Иначе прячем
       } else {
-        btn.classList.remove('show');
+        btn.classList.remove('show')
       }
-    });
+    })
 
     // При клике прокручиываем на самый верх
     btn.onclick = function (click) {
-      click.preventDefault();
-      scrollTo(0, 400);
+      click.preventDefault()
+      scrollTo(0, 400)
     }
-  });
+  })
 }
