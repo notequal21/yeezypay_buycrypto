@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zxx">
 @@include('components/_head.html', {
-'title':'name',
+'title':'Yeezypay',
 })
 
 <body>
@@ -10,7 +10,140 @@
     <div class="content">
       @@include('components/header.html')
 
+      <div class="main">
+        <div class="container">
+          <div class="main-body">
+            <div class="main-body__title">
+              Выберете криптовалюту которую хотите купить
+            </div>
 
+            <form id="form" class="main-body__con _locked">
+              <div class="main-select">
+                <label class="main-select__item">
+                  <input type="radio" class="main-select__item-radio" name="currency-type">
+                  <div class="main-select__item-fake">
+                    <img src="./img/main/btc.svg" alt="">
+                    <span>Bitcoin</span>
+                  </div>
+                </label>
+                <label class="main-select__item">
+                  <input type="radio" class="main-select__item-radio" name="currency-type">
+                  <div class="main-select__item-fake">
+                    <img src="./img/main/eth.svg" alt="">
+                    <span>Ethereum</span>
+                  </div>
+                </label>
+                <label class="main-select__item">
+                  <input type="radio" class="main-select__item-radio" name="currency-type">
+                  <div class="main-select__item-fake">
+                    <img src="./img/main/usdt.svg" alt="">
+                    <span>USDT (TRC20)</span>
+                  </div>
+                </label>
+              </div>
+
+              <div class="main-amount">
+                <div class="main-amount__inputs">
+                  <label class="main-amount__inputs-item">
+                    <span>Введите сумму, РУБ</span>
+                    <input type="number" value="5000.00">
+
+                    <div class="tooltip">
+                      <div class="tooltip__btn" id="tooltip-btn-1">
+                        <svg width="24" height="25" viewBox="0 0 24 25" fill="none">
+                          <circle cx="12" cy="12.5" r="11" stroke="#787F9B" stroke-width="2" />
+                          <path d="M12 7.5V12.5" stroke="#787F9B" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                          <path d="M12 16.5V17" stroke="#787F9B" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        </svg>
+                      </div>
+                      <div class="tooltip-content" id="tooltip-1">
+                        <div class="tooltip-content__title">Недостаточная сумма
+                        </div>
+                        <div class="tooltip-content__descr">Минимальная сумма покупки
+                          2500 рублей</div>
+                        <div class="tooltip-content__close" id="tooltip-close-btn-1">
+                          <svg width="10" height="11" viewBox="0 0 10 11" fill="none">
+                            <path d="M2.5 3.01173L7.82258 8.33432" stroke="#787F9B" stroke-width="2"
+                              stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M2.5 8.3343L7.82258 3.01172" stroke="#787F9B" stroke-width="2"
+                              stroke-linecap="round" stroke-linejoin="round" />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                  </label>
+                  <label class="main-amount__inputs-item">
+                    <span>Количество, USDT</span>
+                    <input type="number" value="71.94">
+
+                    <div class="tooltip">
+                      <div class="tooltip__btn" id="tooltip-btn-2">
+                        <svg width="24" height="25" viewBox="0 0 24 25" fill="none">
+                          <circle cx="12" cy="12.5" r="11" stroke="#787F9B" stroke-width="2" />
+                          <path d="M12 7.5V12.5" stroke="#787F9B" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                          <path d="M12 16.5V17" stroke="#787F9B" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        </svg>
+                      </div>
+                      <div class="tooltip-content" id="tooltip-2">
+                        <div class="tooltip-content__title">Недостаточная сумма
+                        </div>
+                        <div class="tooltip-content__descr">Минимальная сумма покупки
+                          2500 рублей</div>
+                        <div class="tooltip-content__close" id="tooltip-close-btn-2">
+                          <svg width="10" height="11" viewBox="0 0 10 11" fill="none">
+                            <path d="M2.5 3.01173L7.82258 8.33432" stroke="#787F9B" stroke-width="2"
+                              stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M2.5 8.3343L7.82258 3.01172" stroke="#787F9B" stroke-width="2"
+                              stroke-linecap="round" stroke-linejoin="round" />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                  </label>
+                </div>
+                <div class="main-amount__payments">
+                  <div class="main-amount__payments-item">
+                    <img src="./img/main/payment-type01.svg" alt="">
+                  </div>
+                  <div class="main-amount__payments-item">
+                    <img src="./img/main/payment-type02.svg" alt="">
+                  </div>
+                  <div class="main-amount__payments-item">
+                    <img src="./img/main/payment-type03.svg" alt="">
+                  </div>
+                </div>
+              </div>
+
+              <div class="main-card">
+                <label class="main-card__input">
+                  <span>Номер карты</span>
+                  <input id="card-number" type="text" placeholder="0000 0000 0000 0000">
+                </label>
+                <label class="main-card__input">
+                  <span>Имя на карте</span>
+                  <input id="card-name" type="text" placeholder="Ivan Ivanov">
+                </label>
+                <label class="main-card__input _data">
+                  <span>Дата окончания</span>
+                  <input id="card-data" type="text" placeholder="00/00">
+                </label>
+                <label class="main-card__input _pass">
+                  <span>CVV </span>
+                  <input id="card-cvv" type="password" placeholder="•••" maxlength="3">
+                </label>
+              </div>
+
+              <button class="main__btn btn">
+                Купить
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
 
     </div>
     @@include('components/footer.html')

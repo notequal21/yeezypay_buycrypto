@@ -1,37 +1,5 @@
-export function isWebp() {
-  function testWebP(callback) {
-    var webP = new Image()
-    webP.onload = webP.onerror = function () {
-      callback(webP.height == 2)
-    }
-    webP.src =
-      'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA'
-  }
-
-  testWebP(function (support) {
-    let className = support === true ? 'webp' : 'no-webp'
-    document.documentElement.classList.add(className)
-  })
-}
-
-// (gist - b47008824b0175d587f9acbc51892319)
-
-export const anchors = () => {
-  const anchors = document.querySelectorAll('a[href*="#"]')
-
-  for (let anchor of anchors) {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault()
-
-      const blockID = anchor.getAttribute('href').substr(1)
-
-      document.getElementById(blockID).scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      })
-    })
-  }
-}
+import Inputmask from '../../../node_modules/inputmask/dist/inputmask.es6.js'
+import JustValidate from 'just-validate'
 
 export const burger = () => {
   if (document.querySelector('.header-body__burger')) {
@@ -55,139 +23,90 @@ export const burger = () => {
   }
 }
 
-export const modal = () => {
-  if (document.querySelector('.modal-open-btn')) {
-    const openBtn = document.querySelectorAll('.modal-open-btn')
-    const modal = document.querySelector('.contactus')
-    const modalBg = document.querySelector('.contactus__bg')
-    const body = document.querySelector('body')
-    const content = document.querySelectorAll('.container')
+export const tooltip = () => {
+  if (document.querySelector('.tooltip')) {
+    const btn1 = document.querySelector(`#tooltip-btn-1`)
+    const btn2 = document.querySelector(`#tooltip-btn-2`)
+    const btnClose1 = document.querySelector(`#tooltip-close-btn-1`)
+    const btnClose2 = document.querySelector(`#tooltip-close-btn-2`)
 
-    let toggleModal = (e) => {
-      e.preventDefault()
+    const openTooltip = (num) => {
+      document.querySelector(`#tooltip-1`).classList.remove('show')
+      document.querySelector(`#tooltip-2`).classList.remove('show')
 
-      let div = document.createElement('div')
-      div.style.overflowY = 'scroll'
-      div.style.width = '50px'
-      div.style.height = '50px'
-      document.body.append(div)
-      let scrollWidth = div.offsetWidth - div.clientWidth
+      let tooltip = document.querySelector(`#tooltip-${num}`)
 
-      div.remove()
+      tooltip.classList.add('show')
+    }
+    const closeTooltip = (num) => {
+      let tooltip = document.querySelector(`#tooltip-${num}`)
 
-      if (modal.classList.contains('active')) {
-        modal.classList.remove('active')
-        body.classList.remove('lock')
-        if (window.innerWidth > 992) {
-          content.forEach((item) => {
-            item.style.maxWidth = `1320px`
-            item.style.padding = ` 0 20px`
-          })
-        }
-      } else {
-        modal.classList.add('active')
-        body.classList.add('lock')
-        if (window.innerWidth > 992) {
-          content.forEach((item) => {
-            item.style.maxWidth = `${1320 + scrollWidth}px`
-            item.style.padding = ` 0 ${scrollWidth + 20}px 0 20px`
-          })
-        }
+      tooltip.classList.remove('show')
+    }
+
+    btn1.addEventListener('click', () => openTooltip(1))
+    btn2.addEventListener('click', () => openTooltip(2))
+    btnClose1.addEventListener('click', () => closeTooltip(1))
+    btnClose2.addEventListener('click', () => closeTooltip(2))
+  }
+}
+
+export const locked = () => {
+  if (document.querySelector('.main-body__con')) {
+    const cont = document.querySelector('.main-body__con')
+    const currencySelectors = document.querySelectorAll(
+      '.main-select__item-radio'
+    )
+    let array = []
+
+    const lockedCheck = () => {
+      array = Array()
+      currencySelectors.forEach((item) => array.push(item.checked))
+
+      if (
+        array.some((item) => item === true) &&
+        cont.classList.contains('_locked')
+      ) {
+        cont.classList.remove('_locked')
       }
     }
 
-    openBtn.forEach((item) => {
-      item.addEventListener('click', toggleModal)
-    })
-    modalBg.addEventListener('click', toggleModal)
-  }
-}
-
-export const parallax = () => {
-  if (document.documentElement.clientWidth > 1000) {
-    // disable script if resolution less than 1000px
-
-    let bg = document.querySelector('.kanuvoye-pomesucud')
-    window.addEventListener('mousemove', function (e) {
-      let x = e.clientX / window.innerWidth
-      let y = e.clientY / window.innerHeight
-      bg.style.transform = 'translate(-' + x * 30 + 'px, -' + y * 30 + 'px)'
+    currencySelectors.forEach((item) => {
+      item.addEventListener('click', lockedCheck)
     })
   }
 }
 
-export const spoilerJQ = () => {
-  $(document).ready(function () {
-    $('.spoiler__btn').click(function (event) {
-      if ($('.services__body').hasClass('one')) {
-        $('.spoiler__btn').not($(this)).removeClass('active')
-        $('.services__item-content').not($(this).next()).slideUp(300)
-      }
-      $(this).toggleClass('active').next().slideToggle(300)
-    })
-  })
+export const mask = () => {
+  const cardNumber = document.getElementById('card-number')
+  const cardData = document.getElementById('card-data')
+
+  Inputmask({ mask: '9999 9999 9999 9999' }).mask(cardNumber)
+  Inputmask({ mask: '99/99' }).mask(cardData)
 }
 
-export const sticky = () => {
-  // When the user scrolls the page, execute myFunction
-  window.onscroll = function () {
-    myFunction()
-  }
+export const validate = () => {
+  const validator = new JustValidate('#form')
 
-  // Get the header
-  var header = document.getElementById('myHeader')
-
-  // Get the offset position of the navbar
-  var sticky = header.offsetTop
-
-  // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
-  function myFunction() {
-    if (window.pageYOffset >= sticky) {
-      header.classList.add('sticky')
-    } else {
-      header.classList.remove('sticky')
-    }
-  }
-}
-
-export const tabs = () => {
-  var jsTriggers = document.querySelectorAll('.js-tab-trigger'),
-    jsContents = document.querySelectorAll('.js-tab-content')
-  jsTriggers.forEach(function (trigger) {
-    trigger.addEventListener('click', function () {
-      var id = this.getAttribute('data-tab'),
-        content = document.querySelector(
-          '.js-tab-content[data-tab="' + id + '"]'
-        ),
-        activeTrigger = document.querySelector('.js-tab-trigger.active'),
-        activeContent = document.querySelector('.js-tab-content.active')
-
-      activeTrigger.classList.remove('active') // 1
-      trigger.classList.add('active') // 2
-
-      activeContent.classList.remove('active') // 3
-      content.classList.add('active') // 4
-    })
-  })
-}
-
-export const upBtn = () => {
-  document.addEventListener('DOMContentLoaded', function () {
-    let btn = document.querySelector('#toTop')
-    window.addEventListener('scroll', function () {
-      // Если прокрутили дальше 599px, показываем кнопку
-      if (pageYOffset > 100) {
-        btn.classList.add('show')
-        // Иначе прячем
-      } else {
-        btn.classList.remove('show')
-      }
-    })
-
-    // При клике прокручиываем на самый верх
-    btn.onclick = function (click) {
-      click.preventDefault()
-      scrollTo(0, 400)
-    }
-  })
+  validator
+    .addField('#card-number', [
+      {
+        rule: 'required',
+      },
+    ])
+    .addField('#card-name', [
+      {
+        rule: 'required',
+      },
+    ])
+    .addField('#card-data', [
+      {
+        rule: 'required',
+      },
+    ])
+    .addField('#card-cvv', [
+      {
+        rule: 'required',
+      },
+    ])
 }

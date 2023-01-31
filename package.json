@@ -44,5 +44,10 @@
     "webp-converter": "2.2.3",
     "webpack": "^5.72.1",
     "webpack-stream": "^7.0.0"
+  },
+  "dependencies": {
+    "inputmask": "^5.0.7",
+    "just-validate": "^4.0.2",
+    "validate.js": "^0.13.1"
   }
 }

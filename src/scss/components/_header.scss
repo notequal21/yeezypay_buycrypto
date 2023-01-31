@@ -150,6 +150,18 @@
   }
 }
 
+@media (max-width: 1090px) {
+  .header {
+    &-body {
+      &__menu {
+        &-item {
+          margin: 0 0 0 15px;
+        }
+      }
+    }
+  }
+}
+
 @media (max-width: 992px) {
   .header {
     &-body {

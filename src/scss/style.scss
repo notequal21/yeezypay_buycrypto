@@ -10,14 +10,12 @@
 @import 'components/_ui.scss';
 @import 'pages/index/_main.scss';
 
-// fonts --------- &display=swap || &subset=cyrillic-ext
-// throught plugin
-
 ::selection {
 }
 
 body {
   font-family: 'Poppins';
+  background: #0e141e;
 }
 
 .container {
